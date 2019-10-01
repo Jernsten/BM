@@ -44,11 +44,30 @@ export class Bottle {
     }
 }
 
+function log(message) {
+    console.log(message)
+}
+
+function main() {
+    const volume3 = 3, volume5 = 5
+
+    const b3 = new Bottle(volume3)
+    const b5 = new Bottle(volume5)
+
+
+}
+
+function measureOut1or4liters(b3, b5) {
+    // Base case
+    if (b3.content == 1 || b3.content == 4 || 
+        b5.content == 1 || b5.content == 4) {
+        // YAY WE FOUND A SOLUTION
+        return true
+    }
+}
 
 
 
-
-
+main()
 const sanityCheck = () => 'Test is working!'
 export default sanityCheck
-main()
