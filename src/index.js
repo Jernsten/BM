@@ -1,7 +1,9 @@
+"use strict"
 export class Bottle {
-    constructor(volume) {
+    constructor(volume, name = "") {
         this.volume = volume
         this.content = 0
+        this.name = name
     }
 
     fillUp() {
@@ -29,7 +31,7 @@ export class Bottle {
         return this.volume - this.content
     }
 
-    isEmpty(){
+    isEmpty() {
         return this.content == 0
     }
 
@@ -54,17 +56,10 @@ function main() {
     const b3 = new Bottle(volume3)
     const b5 = new Bottle(volume5)
 
-
+    let target = 1
 }
 
-function measureOut1or4liters(b3, b5) {
-    // Base case
-    if (b3.content == 1 || b3.content == 4 || 
-        b5.content == 1 || b5.content == 4) {
-        // YAY WE FOUND A SOLUTION
-        return true
-    }
-}
+
 
 
 

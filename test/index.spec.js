@@ -1,6 +1,7 @@
+"use strict"
 import { expect } from 'chai'
 import sanityCheck from '../src/index'
-import { Bottle } from '../src/index'
+import { Bottle, BinarySearchTree } from '../src/index'
 
 describe('SANITY CHECK', () => {
     it('Should work', () => {
