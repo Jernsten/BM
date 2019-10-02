@@ -60,25 +60,38 @@ export class Node {
 
     createChildNodes() {
         if (this.left.hasRoomFor() > 0) { // A
-            this.child.push(new Node(this.left.fillUp(), this.right))
+            const left = this.left.fillUp()
+            this.pushChildNode(left, this.right)
         }
         if (this.left.content > 0) { // B
-            this.child.push(new Node(this.left.pourOut(), this.right))
+            const left = this.left.pourOut()
+            this.pushChildNode(left, this.right)
         }
         if (this.left.content > 0 && this.right.hasRoomFor() > 0) { // C
-            this.left.pourOverTo(this.right)
-            this.child.push(new Node(this.left, this.right))
+            const left = this.left, right = this.right
+            left.pourOverTo(right)
+            this.pushChildNode(left, right)
         }
-        if (this.right.hasRoomFor() > 0) { // A
-            this.child.push(new Node(this.left, this.right.fillUp()))
+        if (this.right.hasRoomFor() > 0) { // D
+            const right = this.right.fillUp()
+            this.pushChildNode(this.left, right)
         }
-        if (this.right.content > 0) { // B
-            this.child.push(new Node(this.left, this.right.pourOut()))
+        if (this.right.content > 0) { // E
+            const right = this.right.pourOut()
+            this.pushChildNode(this.left, right)
         }
-        if (this.right.content > 0 && this.right.hasRoomFor() > 0) { // C
-            this.left.pourOverTo(this.right)
-            this.child.push(new Node(this.left, this.right))
+        if (this.right.content > 0 && this.right.hasRoomFor() > 0) { // F
+            const left = this.left, right = this.right
+            right.pourOverTo(left)
+            this.pushChildNode(left, right)
         }
+    }
+
+    pushChildNode(right, left) {
+        if (right.isEmpty() && left.isEmpty())
+            return // same as starting point, dont push
+        else
+            this.child.push(new Node(left, right))
     }
 }
 
