@@ -1,7 +1,7 @@
 "use strict"
 import { expect } from 'chai'
 import sanityCheck from '../src/index'
-import { Bottle, BinarySearchTree } from '../src/index'
+import { Bottle, Node } from '../src/index'
 
 describe('SANITY CHECK', () => {
     it('Should work', () => {
@@ -111,5 +111,29 @@ describe('TRANSACTIONS', () => {
 
         expect(aBottle.content).to.equal(some) // 3
         expect(anotherBottle.content).to.equal(volume) // 5
+    })
+})
+
+describe('NODES', () => {
+    it('Should create a Node', () => {
+        expect(new Node()).to.exist.and.be.an.instanceOf(Node)
+    })
+
+    it('Should take two bottles as parameters', () => {
+        const volume = 5,
+            bottle1 = new Bottle(volume),
+            bottle2 = new Bottle(volume),
+            node = new Node(bottle1, bottle2)
+        expect(node.left).to.be.an.instanceOf(Bottle)
+        expect(node.right).to.be.an.instanceOf(Bottle)
+    })
+
+    it('Should create child nodes', () => {
+        const volume = 5,
+            bottle1 = new Bottle(volume),
+            bottle2 = new Bottle(volume),
+            node = new Node(bottle1, bottle2)
+        expect(node.child).to.be.an.instanceOf(Array)
+        expect(node.child[0]).to.be.an.instanceOf(Node)
     })
 })
