@@ -1,7 +1,7 @@
 "use strict"
 import { expect } from 'chai'
 import sanityCheck from '../src/index'
-import { Bottle, Node } from '../src/index'
+import { Bottle, Node, Tree } from '../src/index'
 
 describe('SANITY CHECK', () => {
     it('Should work', () => {
@@ -115,25 +115,38 @@ describe('TRANSACTIONS', () => {
 })
 
 describe('NODES', () => {
-    it('Should create a Node', () => {
-        expect(new Node()).to.exist.and.be.an.instanceOf(Node)
-    })
-
-    it('Should take two bottles as parameters', () => {
-        const volume = 5,
-            bottle1 = new Bottle(volume),
-            bottle2 = new Bottle(volume),
-            node = new Node(bottle1, bottle2)
+    it('Should create a Node with two bottles as parameters', () => {
+        const volume3 = 3, volume5 = 5,
+            left = new Bottle(volume3),
+            right = new Bottle(volume5),
+            node = new Node(left, right)
         expect(node.left).to.be.an.instanceOf(Bottle)
         expect(node.right).to.be.an.instanceOf(Bottle)
     })
+})
 
-    it('Should create child nodes', () => {
-        const volume = 5,
-            bottle1 = new Bottle(volume),
-            bottle2 = new Bottle(volume),
-            node = new Node(bottle1, bottle2)
-        expect(node.child).to.be.an.instanceOf(Array)
-        expect(node.child[0]).to.be.an.instanceOf(Node)
+describe('TREE', () => {
+    it('Should create a Tree objevt', () => {
+        expect(new Tree()).to.be.an.instanceOf(Tree)
     })
+
+    it('Should have a root Node', () => {
+        const volume3 = 3, volume5 = 5,
+            left = new Bottle(volume3),
+            right = new Bottle(volume5),
+            rootNode = new Node(left, right),
+            tree = new Tree(rootNode)
+        expect(tree.rootNode).to.be.an.instanceOf(Node)
+    })
+
+    it('Should have branches', () => {
+        const volume3 = 3, volume5 = 5,
+            left = new Bottle(volume3),
+            right = new Bottle(volume5),
+            rootNode = new Node(left, right),
+            tree = new Tree(rootNode)
+        expect(tree.branch).to.be.an.instanceOf(Object)
+    })
+
+
 })

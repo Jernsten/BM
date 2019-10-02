@@ -1,9 +1,8 @@
 "use strict"
 export class Bottle {
-    constructor(volume, name = "") {
+    constructor(volume) {
         this.volume = volume
         this.content = 0
-        this.name = name
     }
 
     fillUp() {
@@ -48,54 +47,25 @@ export class Bottle {
         this.content -= some
         return this
     }
+
+    copy(){
+        return new Bottle(this.volume).add(this.content)
+    }
 }
 
 export class Node {
-    constructor(leftBottle, rightBottle) {
+    constructor(leftBottle, rightBottle){
         this.left = leftBottle
         this.right = rightBottle
-        this.child = Array()
-        this.createChildNodes()
-    }
-
-    createChildNodes() {
-        if (this.left.hasRoomFor() > 0) { // A
-            const left = this.left.fillUp()
-            this.pushChildNode(left, this.right)
-        }
-        if (this.left.content > 0) { // B
-            const left = this.left.pourOut()
-            this.pushChildNode(left, this.right)
-        }
-        if (this.left.content > 0 && this.right.hasRoomFor() > 0) { // C
-            const left = this.left, right = this.right
-            left.pourOverTo(right)
-            this.pushChildNode(left, right)
-        }
-        if (this.right.hasRoomFor() > 0) { // D
-            const right = this.right.fillUp()
-            this.pushChildNode(this.left, right)
-        }
-        if (this.right.content > 0) { // E
-            const right = this.right.pourOut()
-            this.pushChildNode(this.left, right)
-        }
-        if (this.right.content > 0 && this.right.hasRoomFor() > 0) { // F
-            const left = this.left, right = this.right
-            right.pourOverTo(left)
-            this.pushChildNode(left, right)
-        }
-    }
-
-    pushChildNode(right, left) {
-        if (right.isEmpty() && left.isEmpty())
-            return // same as starting point, dont push
-        else
-            this.child.push(new Node(left, right))
     }
 }
 
-
+export class Tree {
+    constructor(rootNode){
+        this.rootNode = rootNode
+        this.branch = Object()
+    }
+}
 
 const sanityCheck = () => 'Test is working!'
 export default sanityCheck
