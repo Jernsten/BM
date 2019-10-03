@@ -123,30 +123,64 @@ describe('NODES', () => {
         expect(node.left).to.be.an.instanceOf(Bottle)
         expect(node.right).to.be.an.instanceOf(Bottle)
     })
+
+    it('Should have a parent', () => {
+        const volume3 = 3, volume5 = 5,
+            left = new Bottle(volume3),
+            right = new Bottle(volume5),
+            node = new Node(left, right)
+        expect(node.parent).to.be.null
+    })
+
+    it('Should have children', () => {
+        const volume3 = 3, volume5 = 5,
+            left = new Bottle(volume3),
+            right = new Bottle(volume5),
+            node = new Node(left, right)
+        expect(node.children).to.be.an.instanceOf(Array)
+    })
 })
 
 describe('TREE', () => {
-    it('Should create a Tree objevt', () => {
+    it('Should create a Tree object', () => {
         expect(new Tree()).to.be.an.instanceOf(Tree)
     })
 
-    it('Should have a root Node', () => {
-        const volume3 = 3, volume5 = 5,
-            left = new Bottle(volume3),
-            right = new Bottle(volume5),
-            rootNode = new Node(left, right),
-            tree = new Tree(rootNode)
-        expect(tree.rootNode).to.be.an.instanceOf(Node)
+    it('Should have a node', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        expect(tree.node).to.be.an.instanceOf(Node)
     })
 
-    it('Should have branches', () => {
-        const volume3 = 3, volume5 = 5,
-            left = new Bottle(volume3),
-            right = new Bottle(volume5),
-            rootNode = new Node(left, right),
-            tree = new Tree(rootNode)
-        expect(tree.branch).to.be.an.instanceOf(Object)
+    it('Should have a root node', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        expect(tree.root).to.be.an.instanceOf(Node)
     })
 
+    it('Should have a traverseDepthFirst method', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        expect(tree).to.respondTo('traverseDepthFirst')
+    })
 
+    it('Should have a traverseBreadthFirst method', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        expect(tree).to.respondTo('traverseBreadthFirst')
+    })
+
+    it('Should have a contains method', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        expect(tree).to.respondTo('contains')
+    })
+
+    it('Should have a add method', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        expect(tree).to.respondTo('add')
+    })
+
+    it('Should add a node to tree', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        tree.add(new Bottle(3).fillUp(), new Bottle(5), tree.root, tree.traverseDepthFirst)
+        tree.traverseDepthFirst(node => {
+            console.log(node)
+        })
+    })
 })
