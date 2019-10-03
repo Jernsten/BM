@@ -1,7 +1,6 @@
 "use strict"
 import { expect } from 'chai'
-import sanityCheck from '../src/index'
-import { Bottle, Node, Tree } from '../src/index'
+import { sanityCheck, Bottle, Node, Tree } from '../src/index'
 
 describe('SANITY CHECK', () => {
     it('Should work', () => {
@@ -9,7 +8,7 @@ describe('SANITY CHECK', () => {
     })
 })
 
-describe('BOTTLE CREATION AND METHODS', () => {
+describe('BOTTLES', () => {
     it('Should create a bottle', () => {
         expect(new Bottle()).to.be.an.instanceOf(Bottle)
     })
@@ -37,6 +36,13 @@ describe('BOTTLE CREATION AND METHODS', () => {
         const volume = 5
         const bottle = new Bottle(volume).fillUp()
         expect(bottle.pourOut()).to.have.property('content').that.equals(0)
+    })
+
+    it('Should deep copy bottle object', () => {
+        const bottle = new Bottle(1).fillUp()
+        const bottleCopy = bottle.copy()
+        bottle.pourOut()
+        expect(bottleCopy.content).to.equal(1)
     })
 })
 
@@ -166,21 +172,20 @@ describe('TREE', () => {
         expect(tree).to.respondTo('traverseBreadthFirst')
     })
 
-    it('Should have a contains method', () => {
+    it('Should add a child node to tree root node', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        expect(tree).to.respondTo('contains')
+        tree.root.children.push(new Node(new Bottle(1), new Bottle(2)))
+        expect(tree.root.children[0]).to.be.an.instanceOf(Node)
+        expect(tree.root.children[0].left.volume).to.equal(1)
+        expect(tree.root.children[0].right.volume).to.equal(2)
     })
+})
 
-    it('Should have a add method', () => {
-        const tree = new Tree(new Bottle(3), new Bottle(5))
-        expect(tree).to.respondTo('add')
-    })
-
-    it('Should add a node to tree', () => {
-        const tree = new Tree(new Bottle(3), new Bottle(5))
-        tree.add(new Bottle(3).fillUp(), new Bottle(5), tree.root, tree.traverseDepthFirst)
-        tree.traverseDepthFirst(node => {
-            console.log(node)
-        })
+describe('PROBLEM SOLVING', () => {
+    it('Should generate children', () => {
+        const left = new Bottle(3), right = new Bottle(5),
+            tree = new Tree(left, right)
+        const children = tree.root.generateChildren()
+        expect(children).to.be.an.Array()
     })
 })

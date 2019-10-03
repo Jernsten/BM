@@ -17,7 +17,7 @@ export class Bottle {
 
     pourOverTo(otherBottle) {
         const canPour = this.content
-        const canFit = otherBottle.hasRoomFor()
+        const canFit = this.volume - this.content
 
         if (canFit == 0 || canPour == 0) return // cant fit anymore or nothing to pour over
 
@@ -26,8 +26,12 @@ export class Bottle {
         this.content -= amountToPour
     }
 
-    hasRoomFor() {
-        return this.volume - this.content
+    hasRoom() {
+        return (this.volume - this.content) > 0
+    }
+
+    isNotEmpty() {
+        return this.content > 0
     }
 
     isEmpty() {
@@ -59,6 +63,57 @@ export class Node {
         this.right = rightBottle
         this.parent = null
         this.children = Array()
+    }
+
+    generateChildren() {
+        // FILL UP LEFT BOTTLE
+        if (this.left.hasRoom()) {
+            const leftCopy = this.left.copy().fillUp(),
+                rightCopy = this.right.copy()
+            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
+                this.children.push(new Node(leftCopy, rightCopy))
+        }
+        // POUR OUT LEFT BOTTLE
+        if (this.left.isNotEmpty()) {
+            const leftCopy = this.left.copy().pourOut(),
+                rightCopy = this.right.copy()
+            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
+                this.children.push(new Node(leftCopy, rightCopy))
+        }
+        // POUR OVER FROM LEFT TO RIGHT BOTTLE
+        if (this.left.isNotEmpty() && this.right.hasRoom()) {
+            const leftCopy = this.left.copy(),
+                rightCopy = this.right.copy()
+            leftCopy.pourOverTo(rightCopy)
+            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
+                this.children.push(new Node(leftCopy, rightCopy))
+        }
+        // FILL UP RIGHT BOTTLE
+        if (this.right.hasRoom()) {
+            const leftCopy = this.left.copy(),
+                rightCopy = this.right.copy().fillUp()
+            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
+                this.children.push(new Node(leftCopy, rightCopy))
+        }
+        // POUR OUT RIGHT BOTTLE
+        if (this.right.isNotEmpty()) {
+            const leftCopy = this.left.copy(),
+                rightCopy = this.right.copy().pourOut()
+            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
+                this.children.push(new Node(leftCopy, rightCopy))
+        }
+        // POUR OVER FROM RIGHT TO LEFT BOTTLE
+        if (this.right.isNotEmpty() && this.left.hasRoom()) {
+            const leftCopy = this.left.copy(),
+                rightCopy = this.right.copy()
+            rightCopy.pourOverTo(leftCopy)
+            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
+                this.children.push(new Node(leftCopy, rightCopy))
+        }
+    }
+
+    isNotSameAsBaseCondition(left, right) {
+        return left.content == 0 && right.content == 0
     }
 }
 
@@ -95,32 +150,6 @@ export class Tree {
             currentNode = queue.unshift()
         }
     }
-
-    contains(callback, traversal) {
-        traversal.call(this, callback)
-    }
-
-    add(leftBottle, rightBottle, toNode, traversal) {
-        const child = new Node(leftBottle, rightBottle) // add this child
-        let parent = null                               // with this parent
-
-        const callback = node => {
-            if (node.left.content == toNode ||
-                node.right.content == toNode)   // logic to find the parent to attach to
-                parent = node
-        }
-        this.contains(callback, traversal)
-
-        if (parent) {
-            parent.children.push(child)
-            child.parent = parent
-        } else
-            throw new Error('Parent doesnt exist, cant add node')
-    }
 }
 
-const sanityCheck = () => 'Test is working!'
-export default sanityCheck
-function log(message) {
-    console.log(message)
-}
+export const sanityCheck = () => 'Test is working!'
