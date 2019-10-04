@@ -200,9 +200,13 @@ describe('SEARCHING', () => {
         const threeExists = (node) => {
             console.log('DOES THREE EXIST???????? ' + node.left.content + " " + node.right.content)
             if (node.left.content == 3 || node.right.content == 3) {
+                console.log('yaaaaasss <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
                 return true
             }
         }
-        expect(tree.contains(threeExists)).to.be.true
+        expect(tree.contains(threeExists)).to.exist
+        expect(tree.contains(threeExists).left.content).to.equal(3)
+        expect(tree.contains(threeExists).right.content).to.equal(0)
+
     })
 })

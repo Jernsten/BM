@@ -143,21 +143,15 @@ export class Tree {
             console.log('LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPING')
             console.log(currentNode)
 
-            // for (const child in currentNode.children) {
-            //     console.log('child to add: ' + child)
-            //     queue.push(child)                   // queque children
-            // }
-
-            currentNode.children.forEach(child=>{
+            for (const child of currentNode.children) {
                 console.log('child to add: ' + child)
-                queue.push(child)
-            })
+                queue.push(child)                   // queque children
+            }
 
-            logic(currentNode)                      // do smthn with current node
-            console.log("queue length: " + queue.length)
+            if(logic(currentNode)){
+                return currentNode;    // do smthn with current node
+            }                      
             currentNode = queue.shift()             // take next node
-            console.log("queue length: " + queue.length)
-
         }
     }
 
