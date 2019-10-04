@@ -59,6 +59,8 @@ export class Bottle {
 
 export class Node {
     constructor(leftBottle, rightBottle) {
+        if (leftBottle != undefined && rightBottle != undefined)
+            console.log("left: " + leftBottle.content + "| right: " + rightBottle.content)
         this.left = leftBottle
         this.right = rightBottle
         this.parent = null
@@ -70,51 +72,48 @@ export class Node {
         if (this.left.hasRoom()) {
             const leftCopy = this.left.copy().fillUp(),
                 rightCopy = this.right.copy()
-            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy)) {
-                this.children.push(new Node(leftCopy, rightCopy))
-            }
+            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
         }
         // POUR OUT LEFT BOTTLE
         if (this.left.isNotEmpty()) {
             const leftCopy = this.left.copy().pourOut(),
                 rightCopy = this.right.copy()
-            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
-                this.children.push(new Node(leftCopy, rightCopy))
+            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
         }
         // POUR OVER FROM LEFT TO RIGHT BOTTLE
         if (this.left.isNotEmpty() && this.right.hasRoom()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy()
             leftCopy.pourOverTo(rightCopy)
-            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
-                this.children.push(new Node(leftCopy, rightCopy))
+            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
         }
         // FILL UP RIGHT BOTTLE
         if (this.right.hasRoom()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy().fillUp()
-            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
-                this.children.push(new Node(leftCopy, rightCopy))
+            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
         }
         // POUR OUT RIGHT BOTTLE
         if (this.right.isNotEmpty()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy().pourOut()
-            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
-                this.children.push(new Node(leftCopy, rightCopy))
+            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
         }
         // POUR OVER FROM RIGHT TO LEFT BOTTLE
         if (this.right.isNotEmpty() && this.left.hasRoom()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy()
             rightCopy.pourOverTo(leftCopy)
-            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
-                this.children.push(new Node(leftCopy, rightCopy))
+            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
         }
     }
 
-    isNotSameAsBaseCondition(left, right) {
-        return !(left.content == 0 && right.content == 0)
+    addIfNotTwoEmptyBottles(left, right) {
+        if (!(left.content == 0 && right.content == 0)) {
+            const child = new Node(left, right)
+            child.parent = this
+            this.children.push(child)
+        }
     }
 }
 
@@ -137,38 +136,38 @@ export class Tree {
     }
 
     traverseBreadthFirst(logic) {
-        const queue = Array()
-        queue.push(this.root)
+        const queue = [this.root]               // create queue with root node
+        let currentNode = queue.shift()         // dequeue root node
 
-        let currentNode = queue.unshift()
+        while (currentNode) {   // while node exists
+            console.log('LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPING')
+            console.log(currentNode)
 
-        while (currentNode) {
-            currentNode.children.forEach( child => queue.push(child))
             // for (const child in currentNode.children) {
-            //     queue.push(child)
+            //     console.log('child to add: ' + child)
+            //     queue.push(child)                   // queque children
             // }
 
-            logic(currentNode)
-            currentNode = queue.unshift()
+            currentNode.children.forEach(child=>{
+                console.log('child to add: ' + child)
+                queue.push(child)
+            })
+
+            logic(currentNode)                      // do smthn with current node
+            console.log("queue length: " + queue.length)
+            currentNode = queue.shift()             // take next node
+            console.log("queue length: " + queue.length)
+
         }
     }
 
     grow() {
-        this.root.generateChildren()
+        this.node.generateChildren()
         return this
     }
 
-    search(logic) {
-        this.traverseBreadthFirst(logic)
-    }
-
-    searchFor1l() {
-        console.log('sf1l')
-        this.search(node => {
-            console.log(node)
-            if (node.left.content == 1 || node.right.content == 1)
-                console.log('Found 1l, left ' + node.left.content + ', right ' + node.right.content)
-        })
+    contains(logic) {
+        return this.traverseBreadthFirst(logic)
     }
 }
 

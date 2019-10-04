@@ -1,5 +1,6 @@
 "use strict"
 import { expect } from 'chai'
+import { describe, it } from 'mocha'
 import { sanityCheck, Bottle, Node, Tree } from '../src/index'
 
 describe('SANITY CHECK', () => {
@@ -193,12 +194,15 @@ describe('GENERATING NODES', () => {
 })
 
 describe('SEARCHING', () => {
-    const left = new Bottle(3), right = new Bottle(5), tree = new Tree(left, right)
-    tree.grow()
-    tree.root.children.forEach(child => {
-        console.log(child)
+    it('Should find 3l', () => {
+        const left = new Bottle(3), right = new Bottle(5), tree = new Tree(left, right)
+        tree.grow()
+        const threeExists = (node) => {
+            console.log('DOES THREE EXIST???????? ' + node.left.content + " " + node.right.content)
+            if (node.left.content == 3 || node.right.content == 3) {
+                return true
+            }
+        }
+        expect(tree.contains(threeExists)).to.be.true
     })
-
-    // tree.searchFor1l()
-
 })

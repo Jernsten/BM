@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require @babel/register",
-    "start": "nodemon --exec babel-node ./src/index.js"
+    "start": "nodemon --exec babel-node ./src/index.js",
+    "compile": "babel src --out-dir .compiled/src --source-maps && babel test --out-dir .compiled/test --source-maps",
+    "build": "babel ./src/index.js --out-dir .compiled/src/ --source-maps && babel ./test/index.spec.js --out-dir .compiled/test --source-maps"
   },
   "author": "",
   "license": "ISC",
