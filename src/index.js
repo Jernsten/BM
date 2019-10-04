@@ -17,7 +17,7 @@ export class Bottle {
 
     pourOverTo(otherBottle) {
         const canPour = this.content
-        const canFit = this.volume - this.content
+        const canFit = otherBottle.volume - otherBottle.content
 
         if (canFit == 0 || canPour == 0) return // cant fit anymore or nothing to pour over
 
@@ -62,7 +62,7 @@ export class Node {
         this.left = leftBottle
         this.right = rightBottle
         this.parent = null
-        this.children = Array()
+        this.children = []
     }
 
     generateChildren() {
@@ -70,8 +70,9 @@ export class Node {
         if (this.left.hasRoom()) {
             const leftCopy = this.left.copy().fillUp(),
                 rightCopy = this.right.copy()
-            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy))
+            if (this.isNotSameAsBaseCondition(leftCopy, rightCopy)) {
                 this.children.push(new Node(leftCopy, rightCopy))
+            }
         }
         // POUR OUT LEFT BOTTLE
         if (this.left.isNotEmpty()) {
@@ -113,7 +114,7 @@ export class Node {
     }
 
     isNotSameAsBaseCondition(left, right) {
-        return left.content == 0 && right.content == 0
+        return !(left.content == 0 && right.content == 0)
     }
 }
 
@@ -135,20 +136,39 @@ export class Tree {
         recurse(this.root)
     }
 
-    traverseBreadthFirst(callback) {
+    traverseBreadthFirst(logic) {
         const queue = Array()
         queue.push(this.root)
 
         let currentNode = queue.unshift()
 
         while (currentNode) {
-            for (const child in currentNode.children) {
-                queue.push(child)
-            }
+            currentNode.children.forEach( child => queue.push(child))
+            // for (const child in currentNode.children) {
+            //     queue.push(child)
+            // }
 
-            callback(currentNode)
+            logic(currentNode)
             currentNode = queue.unshift()
         }
+    }
+
+    grow() {
+        this.root.generateChildren()
+        return this
+    }
+
+    search(logic) {
+        this.traverseBreadthFirst(logic)
+    }
+
+    searchFor1l() {
+        console.log('sf1l')
+        this.search(node => {
+            console.log(node)
+            if (node.left.content == 1 || node.right.content == 1)
+                console.log('Found 1l, left ' + node.left.content + ', right ' + node.right.content)
+        })
     }
 }
 

@@ -181,11 +181,24 @@ describe('TREE', () => {
     })
 })
 
-describe('PROBLEM SOLVING', () => {
-    it('Should generate children', () => {
-        const left = new Bottle(3), right = new Bottle(5),
-            tree = new Tree(left, right)
-        const children = tree.root.generateChildren()
-        expect(children).to.be.an.Array()
+describe('GENERATING NODES', () => {
+    it('Should grow and generate children', () => {
+        const left = new Bottle(3), right = new Bottle(5), tree = new Tree(left, right)
+        tree.grow()
+        expect(tree.root.children).to.be.an.instanceOf(Array)
+        expect(tree.root.children[0]).to.be.an.instanceOf(Node) // fill left
+        expect(tree.root.children[1]).to.be.an.instanceOf(Node) // fill right
+        expect(tree.root.children[2]).to.equal(undefined) // only 2 children should be created
     })
+})
+
+describe('SEARCHING', () => {
+    const left = new Bottle(3), right = new Bottle(5), tree = new Tree(left, right)
+    tree.grow()
+    tree.root.children.forEach(child => {
+        console.log(child)
+    })
+
+    // tree.searchFor1l()
+
 })
