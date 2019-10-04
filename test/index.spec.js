@@ -149,13 +149,9 @@ describe('NODES', () => {
 })
 
 describe('TREE', () => {
-    it('Should create a Tree object', () => {
-        expect(new Tree()).to.be.an.instanceOf(Tree)
-    })
-
-    it('Should have a node', () => {
+    it('Should create a Tree with root node', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        expect(tree.node).to.be.an.instanceOf(Node)
+        expect(tree.root).to.be.an.instanceOf(Node)
     })
 
     it('Should have a root node', () => {
@@ -163,10 +159,10 @@ describe('TREE', () => {
         expect(tree.root).to.be.an.instanceOf(Node)
     })
 
-    it('Should have a traverseDepthFirst method', () => {
-        const tree = new Tree(new Bottle(3), new Bottle(5))
-        expect(tree).to.respondTo('traverseDepthFirst')
-    })
+    // it('Should have a traverseDepthFirst method', () => {
+    //     const tree = new Tree(new Bottle(3), new Bottle(5))
+    //     expect(tree).to.respondTo('traverseDepthFirst')
+    // })
 
     it('Should have a traverseBreadthFirst method', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
@@ -194,51 +190,40 @@ describe('GENERATING NODES', () => {
 })
 
 describe('SEARCHING', () => {
-    function find(target) {
-        return function (node) {
-            if (node.left.content == target || node.right.content == target) {
-                return true
-            } else {
-                node.generateChildren()
-            }
-        }
-    }
 
-    const pathTo1l = `Take two empty bottles of 3 and 5 liters
-Fill up the left bottle
-Pour from the left bottle to the right bottle
-Fill up the left bottle
-Pour from the left bottle to the right bottle`
+    const pathTo1l =`
+Take two empty bottles of 3 and 5 liters,
+fill up the left bottle,
+pour from the left bottle to the right bottle,
+fill up the left bottle,
+pour from the left bottle to the right bottle and
+thats how you measure out 1 liters!`
 
-    const pathTo4l = `Take two empty bottles of 3 and 5 liters
-Fill up the right bottle
-Pour from the right bottle to the left bottle
-Pour out the left bottle
-Pour from the right bottle to the left bottle
-Fill up the right bottle
-Pour from the right bottle to the left bottle`
-
-    it('Should find 1 and generate more children if needed', () => {
-        const tree = new Tree(new Bottle(3), new Bottle(5))
-        const nodeWith1l = tree.contains(find(1))
-        expect(nodeWith1l).to.exist
-        expect(nodeWith1l.left.content).to.equal(1)
-        expect(nodeWith1l.right.content).to.equal(5)
-    })
+    const pathTo4l = `
+Take two empty bottles of 3 and 5 liters,
+fill up the right bottle,
+pour from the right bottle to the left bottle,
+pour out the left bottle,
+pour from the right bottle to the left bottle,
+fill up the right bottle,
+pour from the right bottle to the left bottle and
+thats how you measure out 4 liters!`
 
     it('Should describe how to get to node', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        const nodeWith1l = tree.contains(find(1))
+        const nodeWith1l = tree.contains(tree.find(1))
         const description1l = nodeWith1l.describeActions()
 
         expect(description1l).to.equal(pathTo1l)
     })
 
+
     it('Should measure 4 liters', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        const nodeWith4l = tree.contains(find(4))
+        const nodeWith4l = tree.contains(tree.find(4))
         const description4l = nodeWith4l.describeActions()
 
         expect(description4l).to.equal(pathTo4l)
     })
+
 })
