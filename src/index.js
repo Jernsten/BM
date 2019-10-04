@@ -59,61 +59,80 @@ export class Bottle {
 
 export class Node {
     constructor(leftBottle, rightBottle) {
-        if (leftBottle != undefined && rightBottle != undefined)
-            console.log("left: " + leftBottle.content + "| right: " + rightBottle.content)
+        // if (leftBottle != undefined && rightBottle != undefined)
+        //     console.log("left: " + leftBottle.content + "| right: " + rightBottle.content)
         this.left = leftBottle
         this.right = rightBottle
         this.parent = null
         this.children = []
+        this.previousAction = 'Take two empty bottles of 3 and 5 liters' // The beginnings, will persist on root node
     }
 
     generateChildren() {
-        // FILL UP LEFT BOTTLE
         if (this.left.hasRoom()) {
             const leftCopy = this.left.copy().fillUp(),
                 rightCopy = this.right.copy()
-            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
+            this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
+                'Fill up the left bottle')
         }
-        // POUR OUT LEFT BOTTLE
+
         if (this.left.isNotEmpty()) {
             const leftCopy = this.left.copy().pourOut(),
                 rightCopy = this.right.copy()
-            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
+            this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
+                'Pour out the left bottle')
         }
-        // POUR OVER FROM LEFT TO RIGHT BOTTLE
+
         if (this.left.isNotEmpty() && this.right.hasRoom()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy()
             leftCopy.pourOverTo(rightCopy)
-            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
+            this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
+                'Pour from the left bottle to the right bottle')
         }
-        // FILL UP RIGHT BOTTLE
+
         if (this.right.hasRoom()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy().fillUp()
-            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
+            this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
+                'Fill up the right bottle')
         }
-        // POUR OUT RIGHT BOTTLE
+
         if (this.right.isNotEmpty()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy().pourOut()
-            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
+            this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
+                'Pour out the right bottle')
         }
-        // POUR OVER FROM RIGHT TO LEFT BOTTLE
+
         if (this.right.isNotEmpty() && this.left.hasRoom()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy()
             rightCopy.pourOverTo(leftCopy)
-            this.addIfNotTwoEmptyBottles(leftCopy, rightCopy)
+            this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
+                'Pour from the right bottle to the left bottle')
         }
     }
 
-    addIfNotTwoEmptyBottles(left, right) {
-        if (!(left.content == 0 && right.content == 0)) {
-            const child = new Node(left, right)
-            child.parent = this
-            this.children.push(child)
+    addIfNotTwoEmptyOrFullBottles(left, right, action) {
+        if ((left.isEmpty() && right.isEmpty()) ||
+            (left.isFull() && right.isFull()))
+            return
+
+        const child = new Node(left, right)
+        child.parent = this
+        child.previousAction = action
+        this.children.push(child)
+    }
+
+    describeActions() {
+        const sentence = []
+        let node = this
+        while (node != null) {
+            sentence.unshift(node.previousAction)
+            node = node.parent
         }
+        return sentence.join('\n')
     }
 }
 
@@ -126,7 +145,7 @@ export class Tree {
     traverseDepthFirst(callback) {
 
         function recurse(currentNode) {
-            for (const child in currentNode.children) {
+            for (const child of currentNode.children) {
                 recurse(child)
             }
             callback(currentNode)
@@ -135,22 +154,21 @@ export class Tree {
         recurse(this.root)
     }
 
-    traverseBreadthFirst(logic) {
+    traverseBreadthFirst(isTheNode) {
         const queue = [this.root]               // create queue with root node
         let currentNode = queue.shift()         // dequeue root node
 
         while (currentNode) {   // while node exists
-            console.log('LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPING')
-            console.log(currentNode)
+            // console.log('LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPING')
+            // console.log(currentNode)
 
+            if (isTheNode(currentNode)) {           // check if desired node
+                return currentNode;
+            }
             for (const child of currentNode.children) {
-                console.log('child to add: ' + child)
                 queue.push(child)                   // queque children
             }
 
-            if(logic(currentNode)){
-                return currentNode;    // do smthn with current node
-            }                      
             currentNode = queue.shift()             // take next node
         }
     }
@@ -160,8 +178,8 @@ export class Tree {
         return this
     }
 
-    contains(logic) {
-        return this.traverseBreadthFirst(logic)
+    contains(filterLogic) {
+        return this.traverseBreadthFirst(filterLogic)
     }
 }
 
