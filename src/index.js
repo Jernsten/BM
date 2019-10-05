@@ -1,4 +1,5 @@
 "use strict"
+
 export class Bottle {
     constructor(volume) {
         this.volume = volume
@@ -71,7 +72,7 @@ export class Node {
         this.right = rightBottle
         this.parent = null
         this.children = []
-        this.previousAction = '\nTake two empty bottles of '
+        this.previousAction = '\n  Take two empty bottles of '
             + leftBottle.volume + ' and ' + rightBottle.volume + ' liters' // The literal beginnings, will be overriten except for root
     }
 
@@ -80,14 +81,14 @@ export class Node {
             const leftCopy = this.left.copy().fillUp(),
                 rightCopy = this.right.copy()
             this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                'fill up the left bottle')
+                ' fill up the left bottle (' +leftCopy.content + '|'+rightCopy.content+')')
         }
 
         if (this.left.isNotEmpty()) {
             const leftCopy = this.left.copy().pourOut(),
                 rightCopy = this.right.copy()
             this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                'pour out the left bottle')
+                ' pour out the left bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
         }
 
         if (this.left.isNotEmpty() && this.right.hasRoom()) {
@@ -95,21 +96,21 @@ export class Node {
                 rightCopy = this.right.copy()
             leftCopy.pourOverTo(rightCopy)
             this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                'pour from the left bottle to the right bottle')
+                ' pour from the left bottle to the right bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
         }
 
         if (this.right.hasRoom()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy().fillUp()
             this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                'fill up the right bottle')
+                ' fill up the right bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
         }
 
         if (this.right.isNotEmpty()) {
             const leftCopy = this.left.copy(),
                 rightCopy = this.right.copy().pourOut()
             this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                'pour out the right bottle')
+                ' pour out the right bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
         }
 
         if (this.right.isNotEmpty() && this.left.hasRoom()) {
@@ -117,7 +118,7 @@ export class Node {
                 rightCopy = this.right.copy()
             rightCopy.pourOverTo(leftCopy)
             this.addIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                'pour from the right bottle to the left bottle')
+                ' pour from the right bottle to the left bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
         }
     }
 
@@ -145,7 +146,9 @@ export class Node {
     }
 
     finish(that, sentence) {
-        const lastPart = ' and\nthats how you measure out ' + that.getTargetedBottle().content + ' liters!'
+        const measure = that.getTargetedBottle().content
+        const side = this.left.hasBeenTargeted() ? 'left' : 'right'
+        const lastPart = ' and\n  now you have ' + measure + ' liters in the ' + side + ' bottle!'
         return sentence + lastPart
     }
 
@@ -163,24 +166,12 @@ export class Tree {
         this.root = this.node
     }
 
-    // traverseDepthFirst(callback) {
-
-    //     function recurse(currentNode) {
-    //         for (const child of currentNode.children) {
-    //             recurse(child)
-    //         }
-    //         callback(currentNode)
-    //     }
-
-    //     recurse(this.root)
-    // }
-
     traverseBreadthFirst(isTheNode) {
         const queue = [this.root]               // create queue with root node
         let currentNode = queue.shift()         // dequeue root node
 
-        while (currentNode) {   // while node exists
-            if (isTheNode(currentNode)) {             // check if desired node
+        while (currentNode) {                   // while node exists
+            if (isTheNode(currentNode)) {           // check if desired node
                 return currentNode
             }
             for (const child of currentNode.children) {
@@ -196,11 +187,11 @@ export class Tree {
         return this
     }
 
-    contains(filterLogic) {
+    getNode(filterLogic) {
         return this.traverseBreadthFirst(filterLogic)
     }
 
-    find(target) {
+    measure(target) {
         return function (node) {
             if (node.left.content == target) {
                 node.left.isTargeted = true
@@ -220,9 +211,81 @@ export const sanityCheck = () => 'Test is working!'
 
 function main() {
 
-    const tree = new Tree(new Bottle(1), new Bottle(10))
-    const nodeWith5l = tree.contains(tree.find(7))
-    console.log(nodeWith5l.describeActions())
+    console.log(`
+░░░░░▓███▓
+░░░░▓█████▓
+░░░░▓█████▓
+░░░░░▓███▓
+░░░░░ *;;*
+░░░░░* ;;*                                                     ▓███▓
+░░░░ * ;;*                                                    ▓█████▓
+░░░░* ;;;;*                                                   ▓█████▓
+░░░░▓█████▓                                                    ▓███▓
+░░░░▓█████▓                                                     *;;*
+░░░░▓█████▓                                                    * ;;*
+░░░▓███████▓                                                   * ;;*
+░░▓█████████▓                                                 * ;;;;*
+░▓███████████▓                                                ▓█████▓
+▓█████████████▓                                               ▓█████▓
+▓███░░░░░░░███▓                                              ▓███████▓
+▓███░░░░░░░███▓   /██████████████████████████████████\\      ▓█████████▓
+▓███░░░░░░░███▓   █                                  █     ▓███████████▓
+▓███░░░░░░░███▓   █              Hello!              █    ▓█████████████▓
+▓███░░░░░░░███▓   █                                  █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █                                  █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █   Do you want to know the best   █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █    way to measure out 1 and 4    █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █   liters with two bottles of 3   █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █          and 5 liters?           █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █                                  █    ▓███░░░░░░░███▓
+░▓██░░░░░░░██▓░   █                                  █    ░▓██░░░░░░░██▓░
+░░▓█████████▓░    \\██████████████████████████████████/     ░▓█████████▓░
+█████████████████████████████████████████████████████████████████████████
+`)
+
+    // change tree.measure to tree.findMeasure
+
+    function describeActionsFor(leftBottleVolume, rightBottleVolume, measure) {
+        const tree = new Tree(new Bottle(leftBottleVolume), new Bottle(rightBottleVolume))
+        return tree.getNode(tree.measure(measure)).describeActions()
+    }
+
+    console.log(`
+
+
+ /████████████████████\\
+ █                    █
+ █   Measure 1 liter  █
+ █                    █
+ \\████████████████████/
+`)
+
+    console.log(describeActionsFor(3,5,1))
+    console.log(`
+
+
+ /█████████████████████\\
+ █                     █
+ █   Measure 4 liters  █
+ █                     █
+ \\█████████████████████/
+`)
+    console.log(describeActionsFor(3,5,4))
+
+    console.log(`
+
+
+ /██████████████████████████████████████████\\
+ █                                          █
+ █   How to measure out 8 liters with two   █
+ █    bottles of 3 and 13 liters takes a    █
+ █      bit more time to calculate...       █
+ █                                          █
+ \\██████████████████████████████████████████/
+`)
+
+    console.log(describeActionsFor(1,100,7))
+
 }
 
 main()

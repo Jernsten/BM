@@ -211,7 +211,7 @@ thats how you measure out 4 liters!`
 
     it('Should describe how to get to node', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        const nodeWith1l = tree.contains(tree.find(1))
+        const nodeWith1l = tree.getNode(tree.measure(1))
         const description1l = nodeWith1l.describeActions()
 
         expect(description1l).to.equal(pathTo1l)
@@ -220,7 +220,7 @@ thats how you measure out 4 liters!`
 
     it('Should measure 4 liters', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        const nodeWith4l = tree.contains(tree.find(4))
+        const nodeWith4l = tree.getNode(tree.measure(4))
         const description4l = nodeWith4l.describeActions()
 
         expect(description4l).to.equal(pathTo4l)
