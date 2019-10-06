@@ -5,10 +5,7 @@
   "scripts": {
     "test": "mocha --require @babel/register",
     "start": "babel-node ./src/index.js",
-    "build": "babel src --out-dir .compiled --source-maps && babel test --out-dir .compiled --source-maps",
-    "print": "babel-node ./src/index.js &> print.txt",
-    "serve": "node ./.compiled/index.js",
-    "debug": "node --inspect-brk ./.compiled/index.js"
+    "build": "babel src --out-dir ./run"
   },
   "author": "",
   "license": "ISC",

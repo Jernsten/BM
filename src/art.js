@@ -68,7 +68,7 @@ export const PRINT = {
        █        #   __| |  ||||||||               █
        █         \\  _/  |  ||||||||               █
        █      .--'--'-. |  | ____ |               █
-       █     / __      \`|__| [o__o] |             █
+       █     / __      \`|__|[o__o]|               █
        █   _(____nm_______ / ____\\____            █
        █                                          █
        █   How to measure out 8 liters with two   █
@@ -101,7 +101,7 @@ export const PRINT = {
        \\██████████████████████████/
 
 
-       
+
     Kemal Demirtas
     Stockholm 2019
 

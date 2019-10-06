@@ -184,22 +184,22 @@ describe('GENERATING NODES', () => {
 describe('SEARCHING', () => {
 
     const pathTo1l = `
-___3_____5___  Take two empty bottles of 3 and 5 liters,
-|  3  |  0  |  fill up the left bottle,
-|  0  |  3  |  pour from the left bottle to the right bottle,
-|  3  |  3  |  fill up the left bottle,
-|  1  |  5  |  pour from the left bottle to the right bottle and
-    DONE!      you have 1 liters in the left bottle.`
+ ___3_____5___  Take two empty bottles of 3 and 5 liters,
+ |  3  |  0  |  fill up the left bottle,
+ |  0  |  3  |  pour from the left bottle to the right bottle,
+ |  3  |  3  |  fill up the left bottle,
+ |  1  |  5  |  pour from the left bottle to the right bottle and
+     DONE!      you have 1 liters in the left bottle.`
 
     const pathTo4l = `
-___3_____5___  Take two empty bottles of 3 and 5 liters,
-|  0  |  5  |  fill up the right bottle,
-|  3  |  2  |  pour from the right bottle to the left bottle,
-|  0  |  2  |  pour out the left bottle,
-|  2  |  0  |  pour from the right bottle to the left bottle,
-|  2  |  5  |  fill up the right bottle,
-|  3  |  4  |  pour from the right bottle to the left bottle and
-    DONE!      you have 4 liters in the right bottle.`
+ ___3_____5___  Take two empty bottles of 3 and 5 liters,
+ |  0  |  5  |  fill up the right bottle,
+ |  3  |  2  |  pour from the right bottle to the left bottle,
+ |  0  |  2  |  pour out the left bottle,
+ |  2  |  0  |  pour from the right bottle to the left bottle,
+ |  2  |  5  |  fill up the right bottle,
+ |  3  |  4  |  pour from the right bottle to the left bottle and
+     DONE!      you have 4 liters in the right bottle.`
 
     it('Should describe how to get to node with 1 liters', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))

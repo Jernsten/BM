@@ -73,7 +73,7 @@ export class Node {
         this.children = []
 
         // The literal beginnings, will be overriten except for root node
-        this.previousAction = '\n___' + leftBottle.volume + '_____'
+        this.previousAction = '\n ___' + leftBottle.volume + '_____'
             + rightBottle.volume + '___  Take two empty bottles of '
             + leftBottle.volume + ' and ' + rightBottle.volume + ' liters'
     }
@@ -137,7 +137,7 @@ export class Node {
         }
         const child = new Node(left, right)
         child.parent = this
-        child.previousAction = '|  ' + left.content + '  |  ' + right.content + '  | ' + howImMade()
+        child.previousAction = ' |  ' + left.content + '  |  ' + right.content + '  | ' + howImMade()
         return child
     }
 
@@ -156,7 +156,7 @@ export class Node {
     finish(sentence) {
         const measure = this.getTargetedBottle().content
         const side = this.left.hasBeenTargeted() ? 'left' : 'right'
-        const lastPart = ' and\n    DONE!      you have '
+        const lastPart = ' and\n     DONE!      you have '
             + measure + ' liters in the '
             + side + ' bottle.'
         return sentence + lastPart
@@ -235,7 +235,7 @@ export const main = function () {
     printHowToGetThere(3, 5, 4)
     PRINT.border()
     PRINT.measure8fromBottles1and20()
-    // printHowToGetThere(20, 1, 8)
+    printHowToGetThere(1, 20, 8)
     PRINT.bye()
 }
 

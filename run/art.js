@@ -1,0 +1,110 @@
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.PRINT = void 0;var PRINT = {
+  welcome: function welcome() {
+    console.log("\n\u2591\u2591\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591\u2591 *;;*\n\u2591\u2591\u2591\u2591\u2591* ;;*                                                     \u2593\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591 * ;;*                                                    \u2593\u2588\u2588\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591* ;;;;*                                                   \u2593\u2588\u2588\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2593                                                    \u2593\u2588\u2588\u2588\u2593\n\u2591\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2593                                                     *;;*\n\u2591\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2593                                                    * ;;*\n\u2591\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593                                                   * ;;*\n\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593                                                 * ;;;;*\n\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593                                                \u2593\u2588\u2588\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593                                               \u2593\u2588\u2588\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593                                              \u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   /\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\\      \u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588                                  \u2588     \u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588              Hello!              \u2588    \u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588                                  \u2588    \u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588                                  \u2588    \u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588   Do you want to know the best   \u2588    \u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588    way to measure out 1 and 4    \u2588    \u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588   liters with two bottles of 3   \u2588    \u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588          and 5 liters?           \u2588    \u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593\n\u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593   \u2588                                  \u2588    \u2593\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2593\n\u2591\u2593\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2593\u2591   \u2588                                  \u2588    \u2591\u2593\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2593\u2591\n\u2591\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2591    \\\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588/     \u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2591\n\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2591\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  },
+  measure1: function measure1() {
+    console.log("\n\n       /\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\\\n       \u2588                    \u2588\n       \u2588   Measure 1 liter  \u2588\n       \u2588                    \u2588\n       \\\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588/\n\n");
+
+
+
+
+
+
+
+
+  },
+  measure4: function measure4() {
+    console.log("\n\n       /\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\\\n       \u2588                     \u2588\n       \u2588   Measure 4 liters  \u2588\n       \u2588                     \u2588\n       \\\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588/\n\n ");
+
+
+
+
+
+
+
+
+  },
+  measure8fromBottles1and20: function measure8fromBottles1and20() {
+    console.log("\n\n       /\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\\\n       \u2588                                          \u2588\n       \u2588                                          \u2588\n       \u2588        #####                             \u2588\n       \u2588       #### _\\_  ________                 \u2588\n       \u2588       ##=-[.].]| \\      \\                \u2588\n       \u2588       #(    _\\ |  |------|               \u2588\n       \u2588        #   __| |  ||||||||               \u2588\n       \u2588         \\  _/  |  ||||||||               \u2588\n       \u2588      .--'--'-. |  | ____ |               \u2588\n       \u2588     / __      `|__|[o__o]|               \u2588\n       \u2588   _(____nm_______ / ____\\____            \u2588\n       \u2588                                          \u2588\n       \u2588   How to measure out 8 liters with two   \u2588\n       \u2588    bottles of 1 and 20 liters takes a    \u2588\n       \u2588     bit more time to calculate, but      \u2588\n       \u2588    I will do it! Just take a few deep    \u2588\n       \u2588     breaths while I figure it out...     \u2588\n       \u2588                                          \u2588\n       \\\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588/\n\n ");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  },
+  border: function border() {
+    console.log("\n\n\u2591\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2591\n");
+
+
+
+  },
+  bye: function bye() {
+    console.log("\n\n\n       /\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\\\n       \u2588                          \u2588\n       \u2588         Thats it!        \u2588\n       \u2588                          \u2588\n       \u2588  Thanks for hanging out  \u2588\n       \u2588        with me :)        \u2588\n       \u2588                          \u2588\n       \\\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588/\n\n\n\n    Kemal Demirtas\n    Stockholm 2019\n\n    ");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  } };exports.PRINT = PRINT;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9hcnQuanMiXSwibmFtZXMiOlsiUFJJTlQiLCJ3ZWxjb21lIiwiY29uc29sZSIsImxvZyIsIm1lYXN1cmUxIiwibWVhc3VyZTQiLCJtZWFzdXJlOGZyb21Cb3R0bGVzMWFuZDIwIiwiYm9yZGVyIiwiYnllIl0sIm1hcHBpbmdzIjoia0dBQU8sSUFBTUEsS0FBSyxHQUFHO0FBQ2pCQyxFQUFBQSxPQUFPLEVBQUUsbUJBQU07QUFDWEMsSUFBQUEsT0FBTyxDQUFDQyxHQUFSOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQWdDSCxHQWxDZ0I7QUFtQ2pCQyxFQUFBQSxRQUFRLEVBQUUsb0JBQU07QUFDWkYsSUFBQUEsT0FBTyxDQUFDQyxHQUFSOzs7Ozs7Ozs7QUFTSCxHQTdDZ0I7QUE4Q2pCRSxFQUFBQSxRQUFRLEVBQUUsb0JBQU07QUFDWkgsSUFBQUEsT0FBTyxDQUFDQyxHQUFSOzs7Ozs7Ozs7QUFTSCxHQXhEZ0I7QUF5RGpCRyxFQUFBQSx5QkFBeUIsRUFBRSxxQ0FBTTtBQUM3QkosSUFBQUEsT0FBTyxDQUFDQyxHQUFSOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUF3QkgsR0FsRmdCO0FBbUZqQkksRUFBQUEsTUFBTSxFQUFFLGtCQUFNO0FBQ1ZMLElBQUFBLE9BQU8sQ0FBQ0MsR0FBUjs7OztBQUlILEdBeEZnQjtBQXlGakJLLEVBQUFBLEdBQUcsRUFBRSxlQUFNO0FBQ1BOLElBQUFBLE9BQU8sQ0FBQ0MsR0FBUjs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBa0JILEdBNUdnQixFQUFkLEMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgUFJJTlQgPSB7XG4gICAgd2VsY29tZTogKCkgPT4ge1xuICAgICAgICBjb25zb2xlLmxvZyhgXG7ilpHilpHilpHilpHilpHilpPilojilojilojilpNcbuKWkeKWkeKWkeKWkeKWk+KWiOKWiOKWiOKWiOKWiOKWk1xu4paR4paR4paR4paR4paT4paI4paI4paI4paI4paI4paTXG7ilpHilpHilpHilpHilpHilpPilojilojilojilpNcbuKWkeKWkeKWkeKWkeKWkSAqOzsqXG7ilpHilpHilpHilpHilpEqIDs7KiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paT4paI4paI4paI4paTXG7ilpHilpHilpHilpEgKiA7OyogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paT4paI4paI4paI4paI4paI4paTXG7ilpHilpHilpHilpEqIDs7OzsqICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paT4paI4paI4paI4paI4paI4paTXG7ilpHilpHilpHilpHilpPilojilojilojilojilojilpMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paT4paI4paI4paI4paTXG7ilpHilpHilpHilpHilpPilojilojilojilojilojilpMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICo7OypcbuKWkeKWkeKWkeKWkeKWk+KWiOKWiOKWiOKWiOKWiOKWkyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAqIDs7Klxu4paR4paR4paR4paT4paI4paI4paI4paI4paI4paI4paI4paTICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKiA7OypcbuKWkeKWkeKWk+KWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWkyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAqIDs7OzsqXG7ilpHilpPilojilojilojilojilojilojilojilojilojilojilojilpMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDilpPilojilojilojilojilojilpNcbuKWk+KWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWkyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paT4paI4paI4paI4paI4paI4paTXG7ilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paT4paI4paI4paI4paI4paI4paI4paI4paTXG7ilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpMgICAv4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIXFxcXCAgICAgIOKWk+KWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWk1xu4paT4paI4paI4paI4paR4paR4paR4paR4paR4paR4paR4paI4paI4paI4paTICAg4paIICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKWiCAgICAg4paT4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paTXG7ilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpMgICDiloggICAgICAgICAgICAgIEhlbGxvISAgICAgICAgICAgICAg4paIICAgIOKWk+KWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWk1xu4paT4paI4paI4paI4paR4paR4paR4paR4paR4paR4paR4paI4paI4paI4paTICAg4paIICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKWiCAgICDilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpNcbuKWk+KWiOKWiOKWiOKWkeKWkeKWkeKWkeKWkeKWkeKWkeKWiOKWiOKWiOKWkyAgIOKWiCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDiloggICAg4paT4paI4paI4paI4paR4paR4paR4paR4paR4paR4paR4paI4paI4paI4paTXG7ilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpMgICDiloggICBEbyB5b3Ugd2FudCB0byBrbm93IHRoZSBiZXN0ICAg4paIICAgIOKWk+KWiOKWiOKWiOKWkeKWkeKWkeKWkeKWkeKWkeKWkeKWiOKWiOKWiOKWk1xu4paT4paI4paI4paI4paR4paR4paR4paR4paR4paR4paR4paI4paI4paI4paTICAg4paIICAgIHdheSB0byBtZWFzdXJlIG91dCAxIGFuZCA0ICAgIOKWiCAgICDilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpNcbuKWk+KWiOKWiOKWiOKWkeKWkeKWkeKWkeKWkeKWkeKWkeKWiOKWiOKWiOKWkyAgIOKWiCAgIGxpdGVycyB3aXRoIHR3byBib3R0bGVzIG9mIDMgICDiloggICAg4paT4paI4paI4paI4paR4paR4paR4paR4paR4paR4paR4paI4paI4paI4paTXG7ilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpMgICDiloggICAgICAgICAgYW5kIDUgbGl0ZXJzPyAgICAgICAgICAg4paIICAgIOKWk+KWiOKWiOKWiOKWkeKWkeKWkeKWkeKWkeKWkeKWkeKWiOKWiOKWiOKWk1xu4paT4paI4paI4paI4paR4paR4paR4paR4paR4paR4paR4paI4paI4paI4paTICAg4paIICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKWiCAgICDilpPilojilojilojilpHilpHilpHilpHilpHilpHilpHilojilojilojilpNcbuKWkeKWk+KWiOKWiOKWkeKWkeKWkeKWkeKWkeKWkeKWkeKWiOKWiOKWk+KWkSAgIOKWiCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDiloggICAg4paR4paT4paI4paI4paR4paR4paR4paR4paR4paR4paR4paI4paI4paT4paRXG7ilpHilpHilpPilojilojilojilojilojilojilojilojilojilpPilpEgICAgXFxcXOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiC8gICAgIOKWkeKWk+KWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWk+KWkVxu4paR4paT4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paT4paRXG5gKVxuXG4gICAgfSxcbiAgICBtZWFzdXJlMTogKCkgPT4ge1xuICAgICAgICBjb25zb2xlLmxvZyhgXG5cbiAgICAgICAv4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIXFxcXFxuICAgICAgIOKWiCAgICAgICAgICAgICAgICAgICAg4paIXG4gICAgICAg4paIICAgTWVhc3VyZSAxIGxpdGVyICDilohcbiAgICAgICDiloggICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIFxcXFzilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilogvXG5cbmApXG4gICAgfSxcbiAgICBtZWFzdXJlNDogKCkgPT4ge1xuICAgICAgICBjb25zb2xlLmxvZyhgXG5cbiAgICAgICAv4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIXFxcXFxuICAgICAgIOKWiCAgICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgIE1lYXN1cmUgNCBsaXRlcnMgIOKWiFxuICAgICAgIOKWiCAgICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIFxcXFzilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilogvXG5cbiBgKVxuICAgIH0sXG4gICAgbWVhc3VyZThmcm9tQm90dGxlczFhbmQyMDogKCkgPT4ge1xuICAgICAgICBjb25zb2xlLmxvZyhgXG5cbiAgICAgICAv4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIXFxcXFxuICAgICAgIOKWiCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgICAgIyMjIyMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgICAjIyMjIF9cXFxcXyAgX19fX19fX18gICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgICAjIz0tWy5dLl18IFxcXFwgICAgICBcXFxcICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgICAjKCAgICBfXFxcXCB8ICB8LS0tLS0tfCAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgICAgIyAgIF9ffCB8ICB8fHx8fHx8fCAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgICAgIFxcXFwgIF8vICB8ICB8fHx8fHx8fCAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgIC4tLSctLSctLiB8ICB8IF9fX18gfCAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgICAgLyBfXyAgICAgIFxcYHxfX3xbb19fb118ICAgICAgICAgICAgICAg4paIXG4gICAgICAg4paIICAgXyhfX19fbm1fX19fX19fIC8gX19fX1xcXFxfX19fICAgICAgICAgICAg4paIXG4gICAgICAg4paIICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paIXG4gICAgICAg4paIICAgSG93IHRvIG1lYXN1cmUgb3V0IDggbGl0ZXJzIHdpdGggdHdvICAg4paIXG4gICAgICAg4paIICAgIGJvdHRsZXMgb2YgMSBhbmQgMjAgbGl0ZXJzIHRha2VzIGEgICAg4paIXG4gICAgICAg4paIICAgICBiaXQgbW9yZSB0aW1lIHRvIGNhbGN1bGF0ZSwgYnV0ICAgICAg4paIXG4gICAgICAg4paIICAgIEkgd2lsbCBkbyBpdCEgSnVzdCB0YWtlIGEgZmV3IGRlZXAgICAg4paIXG4gICAgICAg4paIICAgICBicmVhdGhzIHdoaWxlIEkgZmlndXJlIGl0IG91dC4uLiAgICAg4paIXG4gICAgICAg4paIICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4paIXG4gICAgICAgXFxcXOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiC9cblxuIGApXG4gICAgfSxcbiAgICBib3JkZXI6ICgpID0+IHtcbiAgICAgICAgY29uc29sZS5sb2coYFxuXG7ilpHilpPilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilpPilpFcbmApXG4gICAgfSxcbiAgICBieWU6ICgpID0+IHtcbiAgICAgICAgY29uc29sZS5sb2coYFxuXG5cbiAgICAgICAv4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIXFxcXFxuICAgICAgIOKWiCAgICAgICAgICAgICAgICAgICAgICAgICAg4paIXG4gICAgICAg4paIICAgICAgICAgVGhhdHMgaXQhICAgICAgICDilohcbiAgICAgICDiloggICAgICAgICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIOKWiCAgVGhhbmtzIGZvciBoYW5naW5nIG91dCAg4paIXG4gICAgICAg4paIICAgICAgICB3aXRoIG1lIDopICAgICAgICDilohcbiAgICAgICDiloggICAgICAgICAgICAgICAgICAgICAgICAgIOKWiFxuICAgICAgIFxcXFzilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilogvXG5cblxuXG4gICAgS2VtYWwgRGVtaXJ0YXNcbiAgICBTdG9ja2hvbG0gMjAxOVxuXG4gICAgYClcbiAgICB9XG59Il19
