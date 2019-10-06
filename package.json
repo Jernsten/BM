@@ -1,12 +1,14 @@
 {
   "name": "bn",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "mocha --require @babel/register",
-    "start": "nodemon --exec babel-node ./src/index.js",
-    "compile": "babel src --out-dir .compiled/src --source-maps && babel test --out-dir .compiled/test --source-maps",
-    "build": "babel ./src/index.js --out-dir .compiled/src/ --source-maps && babel ./test/index.spec.js --out-dir .compiled/test --source-maps"
+    "start": "babel-node ./src/index.js",
+    "build": "babel src --out-dir .compiled --source-maps && babel test --out-dir .compiled --source-maps",
+    "print": "babel-node ./src/index.js &> print.txt",
+    "serve": "node ./.compiled/index.js",
+    "debug": "node --inspect-brk ./.compiled/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +24,6 @@
     "mocha": "^6.2.1"
   },
   "dependencies": {
-    "inquirer": "^7.0.0",
-    "nodemon": "^1.19.3"
+    "inquirer": "^7.0.0"
   }
 }

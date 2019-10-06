@@ -1,9 +1,9 @@
 "use strict"
 import { expect } from 'chai'
 import { describe, it } from 'mocha'
-import { sanityCheck, Bottle, Node, Tree } from '../src/index'
+import { Bottle, find, Node, sanityCheck, Tree } from '../src/index'
 
-describe('SANITY CHECK', () => {
+describe('TEST SUITE', () => {
     it('Should work', () => {
         expect(sanityCheck()).to.equal('Test is working!')
     })
@@ -159,11 +159,6 @@ describe('TREE', () => {
         expect(tree.root).to.be.an.instanceOf(Node)
     })
 
-    // it('Should have a traverseDepthFirst method', () => {
-    //     const tree = new Tree(new Bottle(3), new Bottle(5))
-    //     expect(tree).to.respondTo('traverseDepthFirst')
-    // })
-
     it('Should have a traverseBreadthFirst method', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
         expect(tree).to.respondTo('traverseBreadthFirst')
@@ -191,39 +186,36 @@ describe('GENERATING NODES', () => {
 
 describe('SEARCHING', () => {
 
-    const pathTo1l =`
-Take two empty bottles of 3 and 5 liters,
-fill up the left bottle,
-pour from the left bottle to the right bottle,
-fill up the left bottle,
-pour from the left bottle to the right bottle and
-thats how you measure out 1 liters!`
+    const pathTo1l = `
+___3_____5___  Take two empty bottles of 3 and 5 liters,
+|  3  |  0  |  fill up the left bottle,
+|  0  |  3  |  pour from the left bottle to the right bottle,
+|  3  |  3  |  fill up the left bottle,
+|  1  |  5  |  pour from the left bottle to the right bottle and
+               now you have 1 liters in the left bottle!`
 
     const pathTo4l = `
-Take two empty bottles of 3 and 5 liters,
-fill up the right bottle,
-pour from the right bottle to the left bottle,
-pour out the left bottle,
-pour from the right bottle to the left bottle,
-fill up the right bottle,
-pour from the right bottle to the left bottle and
-thats how you measure out 4 liters!`
+___3_____5___  Take two empty bottles of 3 and 5 liters,
+|  0  |  5  |  fill up the right bottle,
+|  3  |  2  |  pour from the right bottle to the left bottle,
+|  0  |  2  |  pour out the left bottle,
+|  2  |  0  |  pour from the right bottle to the left bottle,
+|  2  |  5  |  fill up the right bottle,
+|  3  |  4  |  pour from the right bottle to the left bottle and
+               now you have 4 liters in the right bottle!`
 
-    it('Should describe how to get to node', () => {
+    it('Should describe how to get to node with 1 liters', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        const nodeWith1l = tree.getNode(tree.measure(1))
+        const nodeWith1l = tree.getNode(find(1))
         const description1l = nodeWith1l.describeActions()
 
         expect(description1l).to.equal(pathTo1l)
     })
 
-
     it('Should measure 4 liters', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
-        const nodeWith4l = tree.getNode(tree.measure(4))
-        const description4l = nodeWith4l.describeActions()
+        const description4l = tree.getNode(find(4)).describeActions()
 
         expect(description4l).to.equal(pathTo4l)
     })
-
 })

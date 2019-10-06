@@ -2,25 +2,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run ES6 Tests",
             "type": "node",
             "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceRoot}/test/index.spec.js",
             "cwd": "${workspaceRoot}",
-            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-            "args": [
-                "./test/*.js",
-                "--require",
-                "@babel/register",
-                "-u",
-                "tdd",
-                "--timeout",
-                "999999",
-                "--colors"
-            ],
-            "runtimeArgs": [
-                "--nolazy"
-            ],
-            "sourceMaps": true
+            "preLaunchTask": "build",
+            "outFiles": [
+                "${workspaceRoot}/.compiled/**.js"
+            ]
         }
     ]
 }

@@ -1,0 +1,97 @@
+
+░░░░░▓███▓
+░░░░▓█████▓
+░░░░▓█████▓
+░░░░░▓███▓
+░░░░░ *;;*
+░░░░░* ;;*                                                     ▓███▓
+░░░░ * ;;*                                                    ▓█████▓
+░░░░* ;;;;*                                                   ▓█████▓
+░░░░▓█████▓                                                    ▓███▓
+░░░░▓█████▓                                                     *;;*
+░░░░▓█████▓                                                    * ;;*
+░░░▓███████▓                                                   * ;;*
+░░▓█████████▓                                                 * ;;;;*
+░▓███████████▓                                                ▓█████▓
+▓█████████████▓                                               ▓█████▓
+▓███░░░░░░░███▓                                              ▓███████▓
+▓███░░░░░░░███▓   /██████████████████████████████████\      ▓█████████▓
+▓███░░░░░░░███▓   █                                  █     ▓███████████▓
+▓███░░░░░░░███▓   █              Hello!              █    ▓█████████████▓
+▓███░░░░░░░███▓   █                                  █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █                                  █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █   Do you want to know the best   █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █    way to measure out 1 and 4    █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █   liters with two bottles of 3   █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █          and 5 liters?           █    ▓███░░░░░░░███▓
+▓███░░░░░░░███▓   █                                  █    ▓███░░░░░░░███▓
+░▓██░░░░░░░██▓░   █                                  █    ░▓██░░░░░░░██▓░
+░░▓█████████▓░    \██████████████████████████████████/     ░▓█████████▓░
+░▓█████████████████████████████████████████████████████████████████████▓░
+
+
+
+ /████████████████████\
+ █                    █
+ █   Measure 1 liter  █
+ █                    █
+ \████████████████████/
+
+
+
+___3_____5___  Take two empty bottles of 3 and 5 liters,
+|  3  |  0  |  fill up the left bottle,
+|  0  |  3  |  pour from the left bottle to the right bottle,
+|  3  |  3  |  fill up the left bottle,
+|  1  |  5  |  pour from the left bottle to the right bottle and
+               now you have 1 liters in the left bottle!
+
+
+░▓█████████████████████████████████████████████████████████████████████▓░
+
+
+
+ /█████████████████████\
+ █                     █
+ █   Measure 4 liters  █
+ █                     █
+ \█████████████████████/
+
+ 
+
+___3_____5___  Take two empty bottles of 3 and 5 liters,
+|  0  |  5  |  fill up the right bottle,
+|  3  |  2  |  pour from the right bottle to the left bottle,
+|  0  |  2  |  pour out the left bottle,
+|  2  |  0  |  pour from the right bottle to the left bottle,
+|  2  |  5  |  fill up the right bottle,
+|  3  |  4  |  pour from the right bottle to the left bottle and
+               now you have 4 liters in the right bottle!
+
+
+░▓█████████████████████████████████████████████████████████████████████▓░
+
+
+
+ /██████████████████████████████████████████\
+ █                                          █
+ █                                          █
+ █        #####                             █
+ █       #### _\_  ________                 █
+ █       ##=-[.].]| \      \                █
+ █       #(    _\ |  |------|               █
+ █        #   __| |  ||||||||               █
+ █         \  _/  |  ||||||||               █
+ █      .--'--'-. |  | ____ |               █
+ █     / __      `|__| [o__o] |             █
+ █   _(____nm_______ / ____\____            █
+ █                                          █
+ █   How to measure out 8 liters with two   █
+ █    bottles of 1 and 20 liters takes a    █
+ █     bit more time to calculate, but      █
+ █    I will do it! Just take a few deep    █
+ █     breaths while I figure it out...     █
+ █                                          █
+ \██████████████████████████████████████████/
+
+ 
