@@ -36,6 +36,8 @@ export const PRINT = {
     measure1: () => {
         console.log(`
 
+
+
        /████████████████████\\
        █                    █
        █   Measure 1 liter  █
@@ -47,6 +49,9 @@ export const PRINT = {
     measure4: () => {
         console.log(`
 
+
+
+
        /█████████████████████\\
        █                     █
        █   Measure 4 liters  █
@@ -57,6 +62,8 @@ export const PRINT = {
     },
     measure8fromBottles1and20: () => {
         console.log(`
+
+        
 
        /██████████████████████████████████████████\\
        █                                          █
@@ -80,12 +87,6 @@ export const PRINT = {
        \\██████████████████████████████████████████/
 
  `)
-    },
-    border: () => {
-        console.log(`
-
-░▓█████████████████████████████████████████████████████████████████████▓░
-`)
     },
     bye: () => {
         console.log(`

@@ -1,5 +1,6 @@
 "use strict"
 import { PRINT } from './art'
+export const sanityCheck = () => 'Test is working!'
 
 export class Bottle {
     constructor(volume) {
@@ -226,18 +227,15 @@ const printHowToGetThere = (leftVolume, rightVolume, desiredMeasure) => {
     )
 }
 
-export const main = function () {
+function main() {
     PRINT.welcome()
     PRINT.measure1()
     printHowToGetThere(3, 5, 1)
-    PRINT.border()
     PRINT.measure4()
     printHowToGetThere(3, 5, 4)
-    PRINT.border()
     PRINT.measure8fromBottles1and20()
     printHowToGetThere(1, 20, 8)
     PRINT.bye()
 }
 
-export const sanityCheck = () => 'Test is working!'
 main()
