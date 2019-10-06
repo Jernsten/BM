@@ -131,7 +131,7 @@ describe('NODES', () => {
         expect(node.right).to.be.an.instanceOf(Bottle)
     })
 
-    it('Should have a parent', () => {
+    it('Should not have a parent', () => {
         const volume3 = 3, volume5 = 5,
             left = new Bottle(volume3),
             right = new Bottle(volume5),
@@ -139,7 +139,7 @@ describe('NODES', () => {
         expect(node.parent).to.be.null
     })
 
-    it('Should have children', () => {
+    it('Should have room for children', () => {
         const volume3 = 3, volume5 = 5,
             left = new Bottle(volume3),
             right = new Bottle(volume5),
@@ -154,16 +154,6 @@ describe('TREE', () => {
         expect(tree.root).to.be.an.instanceOf(Node)
     })
 
-    it('Should have a root node', () => {
-        const tree = new Tree(new Bottle(3), new Bottle(5))
-        expect(tree.root).to.be.an.instanceOf(Node)
-    })
-
-    it('Should have a traverseBreadthFirst method', () => {
-        const tree = new Tree(new Bottle(3), new Bottle(5))
-        expect(tree).to.respondTo('traverseBreadthFirst')
-    })
-
     it('Should add a child node to tree root node', () => {
         const tree = new Tree(new Bottle(3), new Bottle(5))
         tree.root.children.push(new Node(new Bottle(1), new Bottle(2)))
@@ -171,6 +161,12 @@ describe('TREE', () => {
         expect(tree.root.children[0].left.volume).to.equal(1)
         expect(tree.root.children[0].right.volume).to.equal(2)
     })
+
+    it('Should have a traverseBreadthFirst method', () => {
+        const tree = new Tree(new Bottle(3), new Bottle(5))
+        expect(tree).to.respondTo('traverseBreadthFirst')
+    })
+
 })
 
 describe('GENERATING NODES', () => {
@@ -178,9 +174,10 @@ describe('GENERATING NODES', () => {
         const left = new Bottle(3), right = new Bottle(5), tree = new Tree(left, right)
         tree.grow()
         expect(tree.root.children).to.be.an.instanceOf(Array)
-        expect(tree.root.children[0]).to.be.an.instanceOf(Node) // fill left
-        expect(tree.root.children[1]).to.be.an.instanceOf(Node) // fill right
-        expect(tree.root.children[2]).to.equal(undefined) // only 2 children should be created
+        expect(tree.root.children[0]).to.be.an.instanceOf(Node)
+        expect(tree.root.children[1]).to.be.an.instanceOf(Node)
+        // only 2 children should be created
+        expect(tree.root.children[2]).to.equal(undefined)
     })
 })
 

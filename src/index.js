@@ -5,7 +5,7 @@ export class Bottle {
     constructor(volume) {
         this.volume = volume
         this.content = 0
-        // if this bottle has the wanted measure
+        // if this bottle has the desired measure
         this.isTargeted = false
     }
 
@@ -22,9 +22,9 @@ export class Bottle {
     pourOverTo(otherBottle) {
         const canPour = this.content
         const canFit = otherBottle.volume - otherBottle.content
-
-        if (canFit == 0 || canPour == 0) return // cant fit anymore or nothing to pour over
-
+        // cant fit anymore or nothing to pour over
+        if (canFit == 0 || canPour == 0) return
+        // else
         const amountToPour = canFit <= canPour ? canFit : canPour
         otherBottle.content += amountToPour
         this.content -= amountToPour
@@ -46,12 +46,12 @@ export class Bottle {
         return this.content == this.volume
     }
 
-    add(some) { // For test only
+    add(some) {
         this.content += some
         return this
     }
 
-    take(some) { // For test only
+    take(some) {
         this.content -= some
         return this
     }
@@ -67,17 +67,18 @@ export class Bottle {
 
 export class Node {
     constructor(leftBottle, rightBottle) {
-        // if (leftBottle != undefined && rightBottle != undefined)
-        //     console.log("left: " + leftBottle.content + "| right: " + rightBottle.content)
         this.left = leftBottle
         this.right = rightBottle
         this.parent = null
         this.children = []
-        this.previousAction = '\n___' + leftBottle.volume + '_____' + rightBottle.volume + '___  Take two empty bottles of '
-            + leftBottle.volume + ' and ' + rightBottle.volume + ' liters' // The literal beginnings, will be overriten except for root
+
+        // The literal beginnings, will be overriten except for root node
+        this.previousAction = '\n___' + leftBottle.volume + '_____'
+            + rightBottle.volume + '___  Take two empty bottles of '
+            + leftBottle.volume + ' and ' + rightBottle.volume + ' liters'
     }
 
-    generateChildren() {
+    fillPourOrTransfer() {
         const parents = this
 
         const preConditions = {
@@ -101,18 +102,16 @@ export class Node {
         for (const whatsPossible in preConditions) {
             if (preConditions[whatsPossible]()) {
                 const child = parents.createChild(story[whatsPossible])
-                if (!bothBottlesFullOrEmpty(child)) {
+                if (!this.bothBottlesFullOrEmpty(child)) {
                     this.children.push(child)
                 }
             }
         }
-
-        function bothBottlesFullOrEmpty(child) {
-            return ((child.left.isFull() && child.right.isFull()) ||
-                (child.left.isEmpty() && child.right.isEmpty()))
-        }
     }
-
+    bothBottlesFullOrEmpty(child) {
+        return ((child.left.isFull() && child.right.isFull()) ||
+            (child.left.isEmpty() && child.right.isEmpty()))
+    }
     createChild(howImMade) {
         const left = this.left.copy(), right = this.right.copy()
 
@@ -151,21 +150,20 @@ export class Node {
         }
 
         const sentence = actions.join(',\n')
-        return this.finish(this, sentence)
+        return this.finish(sentence)
     }
 
-    finish(that, sentence) {
-        const measure = that.getTargetedBottle().content
+    finish(sentence) {
+        const measure = this.getTargetedBottle().content
         const side = this.left.hasBeenTargeted() ? 'left' : 'right'
-        const lastPart = ' and\n    DONE!      you have ' + measure + ' liters in the ' + side + ' bottle.'
+        const lastPart = ' and\n    DONE!      you have '
+            + measure + ' liters in the '
+            + side + ' bottle.'
         return sentence + lastPart
     }
 
     getTargetedBottle() {
-        if (this.left.hasBeenTargeted())
-            return this.left
-        else
-            return this.right
+        return this.left.hasBeenTargeted() ? this.left : this.right
     }
 }
 
@@ -175,33 +173,35 @@ export class Tree {
         this.root = this.node
     }
 
-    traverseBreadthFirst(isTargeted) {
-        const queue = [this.root]               // create queue with root node
-        let currentNode = queue.shift()         // dequeue root node
+    traverseBreadthFirst(itIsDesired) {
+        // create queue with root node
+        const queue = [this.root]
+        // dequeue root node
+        let currentNode = queue.shift()
 
-        while (currentNode) {                   // while node exists
-            if (isTargeted(currentNode)) {           // check if desired node
+        while (currentNode) {
+            if (itIsDesired(currentNode)) {
                 return currentNode
             }
+            // if not the desired node, queque children
             for (const child of currentNode.children) {
-                queue.push(child)                   // queque children
+                queue.push(child)
             }
-
-            currentNode = queue.shift()             // take next node
+            // dequeue next node to look at
+            currentNode = queue.shift()
         }
     }
 
     grow() {
-        this.node.generateChildren()
+        this.node.fillPourOrTransfer()
         return this
     }
 
-    getNode(targetLogic) {
-        return this.traverseBreadthFirst(targetLogic)
+    getNode(thatHasTheDesiredMeasure) {
+        return this.traverseBreadthFirst(thatHasTheDesiredMeasure)
     }
 }
 
-export function sanityCheck() { return 'Test is working!' }
 
 export function find(desiredMeasure) {
     return function (node) {
@@ -212,16 +212,16 @@ export function find(desiredMeasure) {
             node.right.isTargeted = true
             return true
         } else {
-            node.generateChildren()
+            node.fillPourOrTransfer()
             return false // and keep looking
         }
     }
 }
 
-const printHowToGetThere = (leftVolume, rightVolume, wantedMeasure)=> {
+const printHowToGetThere = (leftVolume, rightVolume, desiredMeasure) => {
     console.log(
         new Tree(new Bottle(leftVolume), new Bottle(rightVolume))
-            .getNode(find(wantedMeasure))
+            .getNode(find(desiredMeasure))
             .describeActions()
     )
 }
@@ -235,8 +235,9 @@ export const main = function () {
     printHowToGetThere(3, 5, 4)
     PRINT.border()
     PRINT.measure8fromBottles1and20()
-    printHowToGetThere(20, 1, 6)
+    // printHowToGetThere(20, 1, 8)
     PRINT.bye()
 }
 
+export const sanityCheck = () => 'Test is working!'
 main()
