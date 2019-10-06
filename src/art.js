@@ -94,7 +94,7 @@ export const PRINT = {
 
        /██████████████████████████\\
        █                          █
-       █         Thats it!        █
+       █        Thats it!         █
        █                          █
        █  Thanks for hanging out  █
        █        with me :)        █
