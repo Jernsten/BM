@@ -36,48 +36,48 @@ export const PRINT = {
     measure1: () => {
         console.log(`
 
- /████████████████████\\
- █                    █
- █   Measure 1 liter  █
- █                    █
- \\████████████████████/
+       /████████████████████\\
+       █                    █
+       █   Measure 1 liter  █
+       █                    █
+       \\████████████████████/
 
 `)
     },
     measure4: () => {
         console.log(`
 
- /█████████████████████\\
- █                     █
- █   Measure 4 liters  █
- █                     █
- \\█████████████████████/
+       /█████████████████████\\
+       █                     █
+       █   Measure 4 liters  █
+       █                     █
+       \\█████████████████████/
 
  `)
     },
     measure8fromBottles1and20: () => {
         console.log(`
 
- /██████████████████████████████████████████\\
- █                                          █
- █                                          █
- █        #####                             █
- █       #### _\\_  ________                 █
- █       ##=-[.].]| \\      \\                █
- █       #(    _\\ |  |------|               █
- █        #   __| |  ||||||||               █
- █         \\  _/  |  ||||||||               █
- █      .--'--'-. |  | ____ |               █
- █     / __      \`|__| [o__o] |             █
- █   _(____nm_______ / ____\\____            █
- █                                          █
- █   How to measure out 8 liters with two   █
- █    bottles of 1 and 20 liters takes a    █
- █     bit more time to calculate, but      █
- █    I will do it! Just take a few deep    █
- █     breaths while I figure it out...     █
- █                                          █
- \\██████████████████████████████████████████/
+       /██████████████████████████████████████████\\
+       █                                          █
+       █                                          █
+       █        #####                             █
+       █       #### _\\_  ________                 █
+       █       ##=-[.].]| \\      \\                █
+       █       #(    _\\ |  |------|               █
+       █        #   __| |  ||||||||               █
+       █         \\  _/  |  ||||||||               █
+       █      .--'--'-. |  | ____ |               █
+       █     / __      \`|__| [o__o] |             █
+       █   _(____nm_______ / ____\\____            █
+       █                                          █
+       █   How to measure out 8 liters with two   █
+       █    bottles of 1 and 20 liters takes a    █
+       █     bit more time to calculate, but      █
+       █    I will do it! Just take a few deep    █
+       █     breaths while I figure it out...     █
+       █                                          █
+       \\██████████████████████████████████████████/
 
  `)
     },
@@ -90,14 +90,16 @@ export const PRINT = {
     bye: () => {
         console.log(`
 
- /██████████████████████████\\
- █                          █
- █         Thats it!        █
- █                          █
- █  Thanks for hanging out  █
- █        with me :)        █
- █                          █
- \\██████████████████████████/
+       /██████████████████████████\\
+       █                          █
+       █         Thats it!        █
+       █                          █
+       █  Thanks for hanging out  █
+       █        with me :)        █
+       █                          █
+       \\██████████████████████████/
+
+       
         `)
     }
 }

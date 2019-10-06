@@ -77,52 +77,6 @@ export class Node {
             + leftBottle.volume + ' and ' + rightBottle.volume + ' liters' // The literal beginnings, will be overriten except for root
     }
 
-    generateChildren2() {
-        if (this.left.hasRoom()) {
-            const leftCopy = this.left.copy().fillUp(),
-                rightCopy = this.right.copy()
-            this.createChildIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                ' fill up the left bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
-        }
-
-        if (this.left.isNotEmpty()) {
-            const leftCopy = this.left.copy().pourOut(),
-                rightCopy = this.right.copy()
-            this.createChildIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                ' pour out the left bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
-        }
-
-        if (this.left.isNotEmpty() && this.right.hasRoom()) {
-            const leftCopy = this.left.copy(),
-                rightCopy = this.right.copy()
-            leftCopy.pourOverTo(rightCopy)
-            this.createChildIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                ' pour from the left bottle to the right bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
-        }
-
-        if (this.right.hasRoom()) {
-            const leftCopy = this.left.copy(),
-                rightCopy = this.right.copy().fillUp()
-            this.createChildIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                ' fill up the right bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
-        }
-
-        if (this.right.isNotEmpty()) {
-            const leftCopy = this.left.copy(),
-                rightCopy = this.right.copy().pourOut()
-            this.createChildIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                ' pour out the right bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
-        }
-
-        if (this.right.isNotEmpty() && this.left.hasRoom()) {
-            const leftCopy = this.left.copy(),
-                rightCopy = this.right.copy()
-            rightCopy.pourOverTo(leftCopy)
-            this.createChildIfNotTwoEmptyOrFullBottles(leftCopy, rightCopy,
-                ' pour from the right bottle to the left bottle (' + leftCopy.content + '|' + rightCopy.content + ')')
-        }
-    }
-
     generateChildren() {
         const parents = this
 
@@ -187,16 +141,6 @@ export class Node {
         child.previousAction = '|  ' + left.content + '  |  ' + right.content + '  | ' + howImMade()
         return child
     }
-    createChildIfNotTwoEmptyOrFullBottles(left, right, action) {
-        if ((left.isEmpty() && right.isEmpty()) ||
-            (left.isFull() && right.isFull()))
-            return // do nothing
-
-        const child = new Node(left, right)
-        child.parent = this
-        child.previousAction = action + '( ' + left.content + ' | ' + right.content + ' )'
-        this.children.push(child)
-    }
 
     describeActions() {
         const actions = []
@@ -213,7 +157,7 @@ export class Node {
     finish(that, sentence) {
         const measure = that.getTargetedBottle().content
         const side = this.left.hasBeenTargeted() ? 'left' : 'right'
-        const lastPart = ' and\n               now you have ' + measure + ' liters in the ' + side + ' bottle!'
+        const lastPart = ' and\n    DONE!      you have ' + measure + ' liters in the ' + side + ' bottle.'
         return sentence + lastPart
     }
 
@@ -291,8 +235,7 @@ export const main = function () {
     printHowToGetThere(3, 5, 4)
     PRINT.border()
     PRINT.measure8fromBottles1and20()
-    printHowToGetThere(20, 1, 8)
-    PRINT.border()
+    // printHowToGetThere(20, 1, 8)
     PRINT.bye()
     console.log('\n\n')
 }
