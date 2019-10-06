@@ -90,6 +90,7 @@ export const PRINT = {
     bye: () => {
         console.log(`
 
+
        /██████████████████████████\\
        █                          █
        █         Thats it!        █
@@ -99,7 +100,11 @@ export const PRINT = {
        █                          █
        \\██████████████████████████/
 
+
        
-        `)
+    Kemal Demirtas
+    Stockholm 2019
+
+    `)
     }
 }

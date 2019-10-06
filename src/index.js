@@ -235,9 +235,8 @@ export const main = function () {
     printHowToGetThere(3, 5, 4)
     PRINT.border()
     PRINT.measure8fromBottles1and20()
-    // printHowToGetThere(20, 1, 8)
+    printHowToGetThere(20, 1, 6)
     PRINT.bye()
-    console.log('\n\n')
 }
 
 main()
