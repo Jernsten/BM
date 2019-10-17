@@ -21,14 +21,15 @@ export class Bottle {
     }
 
     pourOverTo(otherBottle) {
-        const canPour = this.content
-        const canFit = otherBottle.volume - otherBottle.content
-        // cant fit anymore or nothing to pour over
-        if (canFit == 0 || canPour == 0) return
+        const thisBottle = this
+        // if nothing to pour over or other bottle has no room
+        if (thisBottle.isEmpty() || otherBottle.isFull()) return
         // else
+        const canPour = thisBottle.content
+        const canFit = otherBottle.volume - otherBottle.content
         const amountToPour = canFit <= canPour ? canFit : canPour
         otherBottle.content += amountToPour
-        this.content -= amountToPour
+        thisBottle.content -= amountToPour
     }
 
     hasRoom() {
@@ -103,14 +104,14 @@ export class Node {
         for (const whatsPossible in preConditions) {
             if (preConditions[whatsPossible]()) {
                 const child = parents.createChild(story[whatsPossible])
-                if (!this.bothBottlesFullOrEmpty(child)) {
+                if (this.isNotBothBottlesFullOrEmpty(child)) {
                     this.children.push(child)
                 }
             }
         }
     }
-    bothBottlesFullOrEmpty(child) {
-        return ((child.left.isFull() && child.right.isFull()) ||
+    isNotBothBottlesFullOrEmpty(child) {
+        return !((child.left.isFull() && child.right.isFull()) ||
             (child.left.isEmpty() && child.right.isEmpty()))
     }
     createChild(howImMade) {
@@ -175,19 +176,17 @@ export class Tree {
     }
 
     traverseBreadthFirst(itIsDesired) {
-        // create queue with root node
-        const queue = [this.root]
-        // dequeue root node
-        let currentNode = queue.shift()
+        // create queue
+        const queue = []
+        // begin with root node
+        let currentNode = this.root
 
         while (currentNode) {
-            if (itIsDesired(currentNode)) {
+            if (itIsDesired(currentNode))
                 return currentNode
-            }
+
             // if not the desired node, queque children
-            for (const child of currentNode.children) {
-                queue.push(child)
-            }
+            queue.push(...currentNode.children)
             // dequeue next node to look at
             currentNode = queue.shift()
         }
@@ -213,7 +212,7 @@ export function find(desiredMeasure) {
             node.right.isTargeted = true
             return true
         } else {
-            node.fillPourOrTransfer()
+            node.fillPourOrTransfer() // generate children
             return false // and keep looking
         }
     }
